@@ -15,7 +15,7 @@ public class App {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        App app = (App) applicationContext.getBean("app");
+        App app = applicationContext.getBean(App.class);
         app.logEvent("Some event for user id 1");
     }
 
