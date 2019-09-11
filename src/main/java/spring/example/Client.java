@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class Client {
 
-    private String Id;
+    private String id;
     private String fullName;
 
     public Client(String id, String fullName) {
-        Id = id;
+        this.id = id;
         this.fullName = fullName;
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public String getFullName() {
@@ -21,7 +21,7 @@ public class Client {
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public void setFullName(String fullName) {
@@ -33,12 +33,12 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Id == client.Id &&
+        return id == client.id &&
                 Objects.equals(fullName, client.fullName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName);
+        return Objects.hash(id, fullName);
     }
 }
