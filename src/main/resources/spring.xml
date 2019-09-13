@@ -4,37 +4,8 @@
        xsi:schemaLocation="
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
-
-    <bean id="client" class="spring.example.Client">
-        <constructor-arg value="1"/>
-        <constructor-arg value="Boris Jonson"/>
-    </bean>
-
-    <bean id="fileEventLogger" class="spring.example.logger.FileEventLogger" init-method="init">
-        <constructor-arg value="D:\file.txt"/>
-    </bean>
-
-    <bean id="cashEventLogger" class="spring.example.logger.CacheFileLogger" init-method="init"
-          destroy-method="destroy">
-        <constructor-arg value="10"/>
-        <constructor-arg value="D:\file.txt"/>
-    </bean>
-
-    <bean id="eventLogger" class="spring.example.logger.ConsoleEventLogger"/>
-
-    <bean id="app" class="spring.example.App">
-        <constructor-arg ref="client"/>
-        <constructor-arg ref="cashEventLogger"/>
-        <constructor-arg value="11"/>
-        <constructor-arg value="Some event for user id "/>
-    </bean>
-
-    <bean id="event" class="spring.example.logger.Event" scope="prototype">
-        <constructor-arg>
-            <bean class="java.util.Date"/>
-        </constructor-arg>
-        <constructor-arg ref="dateFormat"/>
-    </bean>
-
-    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+    <beans>
+        <import resource="loggers.xml"/>
+        <import resource="others.xml"/>
+    </beans>
 </beans>
