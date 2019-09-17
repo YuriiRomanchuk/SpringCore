@@ -8,13 +8,25 @@
     <bean id="client" class="spring.example.Client">
         <constructor-arg value="1"/>
         <constructor-arg value="Boris Jonson"/>
+        <property name="greeting" value="Hello there!"/>
     </bean>
 
     <bean id="app" class="spring.example.App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="cashEventLogger"/>
-        <constructor-arg value="11"/>
-        <constructor-arg value="Some event for user id "/>
+        <constructor-arg>
+            <map>
+                <entry key="INFO" value-ref="eventLogger"/>
+                <entry key="ERROR" value-ref="combinedEventLogger"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg>
+            <props>
+                <prop key="INFO">Some event for user id</prop>
+                <prop key="ERROR">Some event for user id error</prop>
+                <prop key="DEFAULT">Some event for user id DEFAULT</prop>
+            </props>
+        </constructor-arg>
     </bean>
 
     <bean id="event" class="spring.example.logger.Event" scope="prototype">

@@ -15,4 +15,13 @@
     </bean>
 
     <bean id="eventLogger" class="spring.example.logger.ConsoleEventLogger"/>
+
+    <bean id="combinedEventLogger" class="spring.example.logger.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="eventLogger"/>
+                <ref bean="fileEventLogger"/>
+            </list>
+        </constructor-arg>
+    </bean>
 </beans>
