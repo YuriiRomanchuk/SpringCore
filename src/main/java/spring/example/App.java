@@ -41,9 +41,9 @@ public class App {
     }
 
     private Event receiveEvent(String message) {
-        message.replaceAll(client.getId(), client.getFullName());
+        String msg = message.replaceAll(client.getId(), client.getFullName());
         Event event = applicationContext.getBean(Event.class);
-        event.setMsg(message);
+        event.setMsg(msg);
         return event;
     }
 
